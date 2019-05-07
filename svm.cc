@@ -32,9 +32,15 @@ int main()
 
     float correct = countNonZero(results == test_responses);
     float accuracy = correct / results.total();
+
+    std::cout << "number of samples: " << data_set->getNSamples() << std::endl 
+              << "number of train samples: " << data_set->getNTrainSamples()
+              << std::endl << "number of test samples: " 
+              << data_set->getNTestSamples() << std::endl;  
     
-    std::cout << "correct answers: " << correct << std::endl;
-    std::cout << "accuracy: " << accuracy << std::endl;
+    std::cout << "correct answers: " << correct << "/" 
+              << data_set->getNTestSamples() << " | accuracy: " 
+              << (100 * accuracy) << " %" << std::endl;
 
     return 0;
 }
