@@ -4,9 +4,14 @@
 #include <opencv2/highgui.hpp>
 #include <opencv2/ml.hpp>
 
-int main()
+int main(int argc, char **argv)
 {
-    auto data_set = cv::ml::TrainData::loadFromCSV("train_data.csv", 1, 0, 1);
+    if (argc != 2) {
+        std::cerr << "usage: " << argv[0] << " <dataset_file>" << std::endl;
+        return 1;
+    }
+
+    auto data_set = cv::ml::TrainData::loadFromCSV(argv[1], 1, 0, 1);
 
     data_set->setTrainTestSplitRatio(0.8); // 80 % of dataset for train purpose
     
